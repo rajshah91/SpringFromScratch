@@ -1,12 +1,102 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
- 
+
 	<bean id="test" class="com.app.MyTest">
 		<property name="name" value="Raj Shah" />
 	</bean>
-	
+
 	<bean id="privateConstructorTest" class="com.app.PrivateConstructorTest">
+	</bean>
+	
+	<bean id="car" class="com.app.Car">
+		<property name="carCompany" value="Hyundai" />
+		<property name="modelNo" value="I10" />
+	</bean>
+
+	<bean id="constructorArgumentTest" class="com.app.ConstructorArgumentTest">
+		<constructor-arg value="Baroda"></constructor-arg>
+	</bean>
+
+	<bean id="constructorArgumentOverloadingTest" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="23131313" type="int"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest1" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="Surat" type="String"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest2" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="45654646" type="int"></constructor-arg>
+		<constructor-arg value="Surat" type="String"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest3" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="Surat" type="String"></constructor-arg>
+		<constructor-arg value="45654646" type="int"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest4" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="Surat" type="String"></constructor-arg>
+		<constructor-arg value="45654646" type="int"></constructor-arg>
+		<constructor-arg value="Raj" type="String"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest5" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="45654646" type="int"></constructor-arg>
+		<constructor-arg value="Surat" type="String" index="0"></constructor-arg>
+		<constructor-arg value="Jignesh" type="String" index="2"></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest6" class="com.app.ConstructorArgumentOverloadingTest">
+		<constructor-arg value="45654646" type="int"></constructor-arg>
+		<constructor-arg value="Surat" type="String" index="0"></constructor-arg>
+		<constructor-arg value="Jignesh" type="String" index="2"></constructor-arg>
+		<constructor-arg ref="car" ></constructor-arg>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest7" class="com.app.ConstructorArgumentOverloadingTest">
+		<property name="city" value="Ahmedabad"></property>
+		<property name="name" value="Puja"></property>
+		<property name="population" value="86765679"></property>
+		<property name="car">
+			<bean class="com.app.Car" id="car1">     <!-- This is called inner bean.It is an example of pass by value -->
+				<property name="carCompany" value="Maruti"></property>
+				<property name="modelNo" value="K10"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest8" class="com.app.ConstructorArgumentOverloadingTest">
+		<property name="city" value="Gandhinagar"></property>
+		<property name="name" value="Aashka"></property>
+		<property name="population" value="86765679"></property>
+		<property name="car" ref="car"></property>    <!-- It is an example of pass by reference -->
+	</bean>
+	
+	<bean id="constructorArgumentOverloadingTest9" class="com.app.ConstructorArgumentOverloadingTest">
+		<property name="companies">
+			<list>
+				<value>Shiva Softwares</value>
+				<value>Krawler</value>
+				<value>Tecunique</value>
+			</list>
+		</property>
+		<property name="schools">
+			<set>
+				<value>LFS</value>
+				<value>Shreyas</value>
+				<value>GITS</value>
+				<value>GITS</value>
+			</set>
+		</property>
+		<property name="documentMap">
+			<map>
+				<entry key="Aadhar-Card" value="98368-AHD-7979"></entry>
+				<entry key="Pan-Card" value="BRIGHD6896K"></entry>
+				<entry key="Election-Card" value="AHHD-324-HG-45"></entry>
+			</map>
+		</property>
 	</bean>
 </beans>

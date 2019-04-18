@@ -14,11 +14,14 @@ import org.springframework.core.io.Resource;
 public class MainClass {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml"); // Advanced container
+		System.out.println("-----------------After creating context IoC object --------------------------");
+		
 		// loading the definitions from the given XML file
 		Resource res=new ClassPathResource("applicationContext.xml");
 		BeanFactory bf= new XmlBeanFactory(res); // Core Container
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml"); // Advanced container
+		
 		
 		MyTest test = (MyTest) context.getBean("test");
 		test.printName();
@@ -44,5 +47,16 @@ public class MainClass {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ConstructorArgumentTest constructorArgumentTest= (ConstructorArgumentTest)bf.getBean("constructorArgumentTest");
+		
+		ConstructorArgumentOverloadingTest constructorArgumentOverloadingTest=(ConstructorArgumentOverloadingTest)bf.getBean("constructorArgumentOverloadingTest");
+		
+		ConstructorArgumentOverloadingTest Test7=(ConstructorArgumentOverloadingTest)bf.getBean("constructorArgumentOverloadingTest7");
+		ConstructorArgumentOverloadingTest Test8=(ConstructorArgumentOverloadingTest)bf.getBean("constructorArgumentOverloadingTest8");
+		
+		Test7.printValues();
+		Test8.printValues();
+		
 	}
 }
