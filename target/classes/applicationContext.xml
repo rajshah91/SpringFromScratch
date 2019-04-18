@@ -6,4 +6,7 @@
 	<bean id="test" class="com.app.MyTest">
 		<property name="name" value="Raj Shah" />
 	</bean>
+	
+	<bean id="privateConstructorTest" class="com.app.PrivateConstructorTest">
+	</bean>
 </beans>
